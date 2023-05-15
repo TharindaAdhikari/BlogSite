@@ -1,6 +1,6 @@
 # Travel Blog Site
 
-> This site is a fullstack implementation in MySQL, React, Nodejs.
+> This site is a fullstack implementation in MySQL, React, Nodejs. Through this site, a user can create an account and that user can add blogs, edit them, delete them, etc. Also, another user can view other people's blog post. Also, the user can only edit and delete the relevant post. Also, the user's password is secured.
 
 ## clone or download
 
