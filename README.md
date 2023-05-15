@@ -4,7 +4,7 @@
 
 ## clone or download
 
-`$ git clone https://github.com/merinpriyasha/Student-Note-Management-System.git`
+`$ git clone https://github.com/TharindaAdhikari/BlogSite.git`
 \
  `$ npm i`
  
