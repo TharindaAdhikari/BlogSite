@@ -1,31 +1,72 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Edit from '../img/edit.png'
 import Delete from '../img/delete.png'
-import {Link} from "react-router-dom";
-import Menu from "../pages/Menu";
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import Menu from "./Menu";
+import axios from 'axios';
+import moment from 'moment';
+import { AuthContext } from '../context/authContext';
 
 const SinglePost = () => {
+
+  const [post, setPost] = useState({});
+
+  const location = useLocation()
+  const navigate = useNavigate();
+
+  const postId = location.pathname.split("/")[2];
+
+  const { currentUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/posts/${postId}`);
+        setPost(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [postId]);
+
+  const handleDelete = async ()=>{
+    try {
+      await axios.delete(`/posts/${postId}`);
+      navigate("/")
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const getText = (html) =>{
+    const doc = new DOMParser().parseFromString(html, "text/html")
+    return doc.body.textContent
+  }
+
   return (
     <div className='single'>
       <div className="content">
-        <img src="https://images.pexels.com/photos/6157049/pexels-photo-6157049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" />
+        <img src={`../upload/${post?.img}`} alt=""/>
         <div className="user">
-          <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/profile-photos-4.jpg" alt="" />
+         {post.userImg && <img src= {post.userImg} alt="" />}
           <div className="info">
-            <span>John</span>
-            <p>Posted 2 days ago</p>
+            <span>{post.username}</span>
+            <p>Posted {moment(post.date).fromNow()} </p>
           </div>
+          {currentUser.username === post.username && 
           <div className="edit">
-            <Link to={'/write?edit=2'}>
+            <Link to={`/write?edit=2`} state={post}>
             <img src={Edit} alt="" />
             </Link>
-            <img src={Delete} alt="" />
-          </div>
+            <img  onClick={handleDelete} src={Delete} alt="" />
+          </div>}
+          
         </div>
-        <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at!</h1>
-        <p> The United States of America (U.S.A. or USA), commonly known as the United States (U.S. or US) or America, is a country primarily located in North America. It consists of 50 states, a federal district, five major unincorporated territories, nine Minor Outlying Islands,[i] and 326 Indian reservations. The United States is the world's third-largest country by both land and total area.[c] It shares land borders with Canada to its north and with Mexico to its south and has maritime borders with the Bahamas, Cuba, Russia, and other nations.[j] With a population of over 333 million,[k] it is the most populous country in the Americas and the third most populous in the world. The national capital of the United States is Washington, D.C., and its most populous city and principal financial center is New York City.</p>
+        <h1>{getText(post.title)}</h1>
+        {getText(post.desc)}
       </div>
-      <Menu/>
+      <Menu cat={post.cat}/>
     </div>
   )
 }
