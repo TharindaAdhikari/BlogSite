@@ -7,11 +7,14 @@ import User from '../models/user.js';
 
 
 export const getPosts = async (req, res) => {
+
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Not authenticated!");
+
   try {
     const whereClause = req.query.cat ? { cat: req.query.cat } : {};
     const posts = await Post.findAll({
       where: whereClause,
-      //include: [{ model: User, attributes: ['username'] }],
     });
     return res.status(200).json(posts);
   } catch (error) {
@@ -32,10 +35,13 @@ export const getPosts = async (req, res) => {
 // };
 
 export const getPost = (req, res) => {
+
+  const token = req.cookies.access_token;
+  if (!token) return res.status(401).json("Not authenticated!");
+
   const q =
     "SELECT p.id, `username`, `title`, `desc`, p.img, u.img AS userImg, `cat`,`date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = ? ";
 
-    //console.log(q);
   db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err);
 

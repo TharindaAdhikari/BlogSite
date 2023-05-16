@@ -61,7 +61,6 @@ const SinglePost = () => {
             </Link>
             <img  onClick={handleDelete} src={Delete} alt="" />
           </div>}
-          
         </div>
         <h1>{getText(post.title)}</h1>
         {getText(post.desc)}

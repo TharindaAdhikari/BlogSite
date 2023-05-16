@@ -34,9 +34,9 @@ const Home = () => {
             <img src= {`../upload/${post.img}`} alt="" />
           </div>
             <div className="content">
-              <Link classname="link" to= {`/post/ ${post.id}`}>
+              {/* <Link classname="link" to= {`/post/ ${post.id}`}> */}
                 <h1>{post.title}</h1> 
-              </Link>
+              {/* </Link> */}
               <p>{getText(post.desc)}</p>
 
               <Link classname="link" to= {`/post/ ${post.id}`}>

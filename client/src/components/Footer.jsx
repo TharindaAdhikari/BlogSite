@@ -6,7 +6,7 @@ const Footer = () => {
         <footer>
             <img src={Logo} alt="" />
             <span>
-                Made By Tharinda Adhikari and <b>React.js</b>.
+            Copyright 2023 © Thaari Blogs. <b>All Rights Reserve.</b>.
             </span>
         </footer>
     );

@@ -32,7 +32,9 @@ const Navbar = () => {
                     <Link className="link" to="/?cat=southa">
                         <h6>SOUTH AMERICA</h6>
                     </Link>
-                    <span>{currentUser?.username}</span>
+
+                    <h3><span>{currentUser?.username}</span> </h3>
+
                     {currentUser ? (
                         <span onClick={logout}>Logout</span>
                     ) : (
