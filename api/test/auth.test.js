@@ -5,14 +5,13 @@ import app from "../index.js";
 import request from "supertest";
 import User from "../models/user.js";
 
-// import db from "../db.js"; // assuming you export your db connection object from db.js
-// import bcrypt from "bcrypt";
 
 chai.use(chaiHttp);
 chai.should();
 chai.expect();
 
-describe("/POST register users", () => {
+//Test case for register user enpoint
+describe("/POST/", () => {
     it("it should be create a new users", (done) => {
       const user = {
         username: 'johndoe',
@@ -53,7 +52,7 @@ describe("/POST register users", () => {
   });
 
 
-//   //Test the login endpoint
+//Test the login endpoint
 describe('POST /login', () => {
 
   it('should login an existing user', (done) => {

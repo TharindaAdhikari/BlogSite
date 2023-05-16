@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import axios from "axios";
+import ParagraphComponent from '../components/Paragraph.jsx';
 
   
 const Home = () => {
@@ -37,7 +38,8 @@ const Home = () => {
               {/* <Link classname="link" to= {`/post/ ${post.id}`}> */}
                 <h1>{post.title}</h1> 
               {/* </Link> */}
-              <p>{getText(post.desc)}</p>
+              <ParagraphComponent text={getText(post.desc)} sentenceLimit={3} />
+              {/* <p>{getText(post.desc)}</p> */}
 
               <Link classname="link" to= {`/post/ ${post.id}`}>
               <button>Read More</button>

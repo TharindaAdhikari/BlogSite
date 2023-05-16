@@ -10,7 +10,7 @@ Post.init(
     allowNull: false,
   },
   desc: {
-    type: DataTypes.STRING(1000),
+    type: DataTypes.STRING(3000),
     allowNull: false,
   },
   img: {
@@ -45,6 +45,5 @@ Post.associate = (models) => {
     })
   }
   
-//Post.belongsTo( User, { foreignKey: 'uid' });
 
 export default Post;

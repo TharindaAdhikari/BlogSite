@@ -8,12 +8,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 dotenv.config({
   path: path.resolve(__dirname, `../development.env`),
-  //path: path.resolve(new URL(`../development.env`, import.meta.url).pathname),
 });
 
 console.log(`NODE_ENV=${process.env.NODE_ENV}`);
-
-//const envPath = path.resolve(new URL(`../${process.env.NODE_ENV.trim()}.env`, import.meta.url).pathname);
 
 const db = new Sequelize(
   process.env.DATABASE_NAME,

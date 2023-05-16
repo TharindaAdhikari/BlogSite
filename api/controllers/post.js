@@ -1,9 +1,7 @@
 import { db } from "../config/db.js";
-import { Op } from 'sequelize';
 import jwt from "jsonwebtoken";
 import Post from '../models/post.js';
 import User from '../models/user.js';
-
 
 
 export const getPosts = async (req, res) => {

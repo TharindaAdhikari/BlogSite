@@ -73,7 +73,7 @@ const swaggerOptions = {
   swaggerDefinition: {
     openapi: "3.0.0",
     info: {
-      title: "Users API",
+      title: "Travel Blog API",
       version: "1.0.0",
     },
   },

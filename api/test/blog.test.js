@@ -14,6 +14,7 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 chai.should();
 
+//Test case for Get post by ID enpoint
 describe('Posts API', () => {
   let user;
   let token;
@@ -34,6 +35,7 @@ describe('Posts API', () => {
     await Post.destroy({ where: { uid: user.id } });
     await user.destroy();
   });
+
 
   describe('GET /posts/:id', () => {
     it('should return a post by ID', async () => {
@@ -60,7 +62,7 @@ describe('Posts API', () => {
   });
 });
      
-
+////Test case for Get posts enpoint
 describe('getPost function', () => {
     it('should return a post object with the specified id', () => {
       const req = { params: { id: 1 } };
@@ -140,9 +142,8 @@ describe('getPost function', () => {
     });
   });
 
-/**
- * update post
- */
+
+//Test case for update post enpoint
 describe('updatePost', () => {
   let token;
   let postId;
