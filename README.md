@@ -41,4 +41,8 @@
 
 * https://documenter.getpostman.com/view/21887828/2s93eeRVMD
 
+### Demo Video
+
+* https://github.com/TharindaAdhikari/BlogSite/assets/68435792/c02f451c-6a74-4cf4-9a33-785cfdd76bd5
+
 
